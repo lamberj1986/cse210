@@ -1,0 +1,12 @@
+Question: What is version control and why is it important? 
+    Your response must:
+        Explain the meaning of Version Control
+        Highlight a benefit of Version Control
+        Provide an application of Version Control. This means, provide an example of how Version Control could be used.
+        Show a command used in Version Control (for example a Git command)
+        Thoroughly explain these concepts (this likely cannot be done in less than 100 words)
+
+Response:
+Version Control is a process that ensures that programs and apps that are being developed have a way to fallback to a previous stable version of the code. In most tech organizations version control is a critical component to their development of new software. With multiple developers working on the same code base, there needs to be a way to check changes in and out of the various release branches. This will allow for all of the changes to be integrated into the main feature branch in a coordinated way. Additionally having version control will also allow the company to roll back the code to a known safe version if there was ever a critical crash or security breach. 
+
+Many organizations utilize the version controls that are provided with GitHub, this tool was utilized at my last company. In the case of this organization they would use both pull and push requests to either pull down the latest version of the code, this would include any changes that has been committed by other developers on the team, or push up any changes that they had made to the latest feature branch. This would be accomplished by using the 'git push' or 'git pull' commands.
