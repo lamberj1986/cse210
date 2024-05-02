@@ -66,9 +66,9 @@ class Program
             else if (choice == 5) // Add new prompt
             {
                 Console.WriteLine("What is the new prompt?");
-                string newPrompt = Console.ReadLine();
+                string newUserPrompt = Console.ReadLine();
 
-                newPrompt.AddNewPrompt(newPrompt);
+                newPrompt.AddNewPrompt(newUserPrompt);
             }
 
         } while (choice != 6);
