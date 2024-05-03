@@ -2,16 +2,16 @@ using System;
 
 public class Journal
     {
-        public List<journalEntry> _entries = new List<journalEntry>();
+        public List<Entry> _entries = new List<Entry>();
 
-        public void AddEntry(Entry newEntry) // Struggling with how to format this section
+        public void AddEntry(Entry newEntry)
         {
             _entries.Add(newEntry);
         }
 
         public void DisplayAll()
         {
-            foreach (journalEntry entry in _entries)
+            foreach (Entry entry in _entries)
             {
                 entry.Display();
             }
@@ -21,9 +21,9 @@ public class Journal
         {
             using (StreamWriter outputFile = new StreamWriter(fileName))
             {
-                foreach (journalEntry entry in _entries)
+                foreach (Entry entry in _entries)
                 {
-                    string newLine = "Date: " + entry._date + " - Prompt: " + entry._prompt + "|" + entry._entryText;
+                    string newLine = "Date: " + entry._date + " - Prompt: " + entry._promptText + "|" + entry._entryText;
                     outputFile.WriteLine(newLine);
                 }
             }
