@@ -1,3 +1,23 @@
 Abstraction is a method to hide the complexity of the application from the user by keeping unnecessary details hidden. This allows a developer to provide the information that is needed to ensure that a program runs correctly, without adding any unnecessary fluff to the program. An example of this would be registering for a seminar, as a person (or in this case an object) you need to provide certain pieces of information that is relevant to the organizer. Some of this information could include: your name, your email, your travel details, where you plan on staying, your payment method. But this information would probably not include the following: the names of your children, where you grew up, what you annual salary is, how many dental fillings you have. 
 
 In the aspect of a program, there is a lot of information that is being passed around. In the case of this week's assignment, adding in more details to the date, or how long it took for a user to respond to the prompt, are both pieces of information that you could collect bur are not pertinent to this app. When we built out the design specs for the app we decided that it would only be pertinent to collect the current date as well as the response from the user to then append that into the journal. An example of abstraction would be from this weeks prove assignment, we have the entry data collected and hidden away from the user's eye. They only see the prompt or the data entry results, but not how that data is being saved/stored.
+
+A code example of this principle would be as follows:
+
+public class Journal
+    {
+        public List<Entry> _entries = new List<Entry>();
+
+        public void AddEntry(Entry newEntry)
+        {
+            _entries.Add(newEntry);
+        }
+
+        public void DisplayAll()
+        {
+            foreach (Entry entry in _entries)
+            {
+                entry.Display();
+            }
+        }
+    }
