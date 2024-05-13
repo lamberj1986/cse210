@@ -19,16 +19,20 @@ class Program
 
         Random random = new();
 
-        int toDisplay = random.Next(3) + 1;
+        // int toDisplay = random.Next(3) + 1;
+
+        int toDisplay = 3;
 
         // Testing how far the code gets
 
-        Console.WriteLine($"The script was able to get to stage 1, the random number is {toDisplay}");
+        // Console.WriteLine($"The script was able to get to stage 1, the random number is {toDisplay}");
 
         if (toDisplay == 1)
         {
             while(!script1.IsCompletelyHidden())
             {
+                int toHide = random.Next(5) + 2;
+
                 Console.Clear();
                 Console.WriteLine(script1.GetDisplayText());
 
@@ -44,20 +48,18 @@ class Program
                     return;
                 }
 
-                int toHide = random.Next(5);
-
                 script1.HideRandomWords(toHide);
-
-                if (script1.IsCompletelyHidden())
-                {
-                    break;
-                }
             }
+
+            Console.Clear();
+            Console.WriteLine("Contrats! You memorized the scripture.");
         }
         else if (toDisplay == 2)
         {
             while(!script2.IsCompletelyHidden())
             {
+                int toHide = random.Next(5) + 2;
+                
                 Console.Clear();
                 Console.WriteLine(script2.GetDisplayText());
 
@@ -73,22 +75,23 @@ class Program
                     return;
                 }
 
-                int toHide = random.Next(5);
-
                 script2.HideRandomWords(toHide);
-
-                if (script2.IsCompletelyHidden())
-                {
-                    break;
-                }
             }
+
+            Console.Clear();
+            Console.WriteLine("Contrats! You memorized the scripture.");
         }
         else if (toDisplay == 3)
         {
             while(!script3.IsCompletelyHidden())
             {
+                int toHide = random.Next(5) + 2;
+
                 Console.Clear();
                 Console.WriteLine(script3.GetDisplayText());
+
+                Console.WriteLine();
+                Console.WriteLine($"The number of lines to hide is: {toHide}");
 
                 Console.Write("Press Enter to hide a word or type 'quit' to exit: ");
                 string input = Console.ReadLine();
@@ -102,15 +105,11 @@ class Program
                     return;
                 }
 
-                int toHide = random.Next(5);
-
                 script3.HideRandomWords(toHide);
-
-                if (script3.IsCompletelyHidden())
-                {
-                    break;
-                }
             }
+
+            Console.Clear();
+            Console.WriteLine("Contrats! You memorized the scripture.");
         }
     }
 }

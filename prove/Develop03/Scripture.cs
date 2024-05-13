@@ -1,60 +1,74 @@
-using System;
+    using System;
 
-public class Scripture
-{
-    private Reference _reference;
-    private List<Word> _words = new List<Word>();
-    private List<string> _hiddenWords = new List<string>();
-    private List<string> _shownWords = new List<string>();
-
-    public Scripture(Reference Reference, String text)
+    public class Scripture
     {
-        _reference = Reference;
-        string[] splitText = text.Split(" ");
-        foreach (string word in splitText)
-        {
-            _shownWords.Add(word);
-        }   
-    }
+        private Reference _reference;
+        private List<Word> _words = new List<Word>();
+        private List<string> _shownWords = new List<string>();
+        private List<int> _hiddenWordIndes = new List<int>();
 
-    public void HideRandomWords(int numberToHide)
-    {
-        Random random = new();
-        
-        for (int i = 0; i < numberToHide; i++)
-        {
-            int randoNumber = random.Next(_shownWords.Count());
-            string removeWord = _shownWords[randoNumber];
+        private Random _random = new Random();
 
-            if (removeWord != "_____")
+        public Scripture(Reference Reference, String text)
+        {
+            _reference = Reference;
+            string[] splitText = text.Split(" ");
+            foreach (string wordText in splitText)
             {
-                _hiddenWords.Add(removeWord);
-            }
-            if (removeWord == "_____")
+                Word newWord = new Word(wordText);
+                _words.Add(newWord);
+                _shownWords.Add(wordText);
+            }   
+        }
+
+        public void HideRandomWords(int numberToHide)
+        {
+            numberToHide = Math.Min(numberToHide, _words.Count - _hiddenWordIndes.Count);
+            
+            for (int i = 0; i < numberToHide; i++)
             {
-                randoNumber = random.Next(_shownWords.Count());
+                int randoNumber;
+
+                do
+                {
+                    randoNumber = _random.Next(_words.Count);
+                } while (_hiddenWordIndes.Contains(randoNumber));
+
+                _words[randoNumber].Hide();
+                _hiddenWordIndes.Add(randoNumber);
             }
         }
-    }
 
-    public string GetDisplayText()
-    {
-        string theReference = _reference.GetDisplayText();
-        string theVerse = string.Join(" ", _words);
-
-        return $"{theReference}\n {theVerse}";
-    }
-
-    public bool IsCompletelyHidden()
-    {
-        bool isAllHidden = false;
-        bool finalResult = _shownWords.All(word => word == "_____");
-
-        if (finalResult)
+        public string GetDisplayText()
         {
-            isAllHidden = true; 
+            string theReference = _reference.GetDisplayText();
+            
+            List<string> displayedWords = new List<string>();
+            
+            foreach (Word word in _words)
+            {
+                if(word.IsHidden())
+                {
+                    displayedWords.Add("_____");
+                }
+                else
+                {
+                    displayedWords.Add(word.GetDisplayText());
+                }
+            }
+
+            string theVerse = string.Join(" ", displayedWords);
+
+            if(IsCompletelyHidden())
+            {
+                theVerse += "\nCongrats! You have memorized the entire verse.";
+            }
+
+            return $"{theReference}\n {theVerse}";
         }
-        
-        return isAllHidden;
+
+        public bool IsCompletelyHidden()
+        {
+           return _words.All(word => word.IsHidden());
+        }
     }
-}

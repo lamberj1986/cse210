@@ -1,0 +1,12 @@
+Encapsulation is a key concept in coding, in essence it is creating classes that contain the complete entity that you are working on. In the case of this week's assignment, we encapsulated the scripture reference into one class. This class is independent and able to function all on its own. In addition to having a single entity in the class, the variables that are used within the class are protected by making them private, as compared to public. This adds an additional layer of protection for the information that you have contained within your class.
+
+The main benefit in following this would be ensuring that your variables are protected from the outside as well as having a self contained unit that is able to be used within other programs or classes with minimal impact to others classes. Hence having modularity you can make adjustments to one class without having a major rewrite of the remainder of the code.
+
+A coding example of this would be as follows:
+
+public class Reference
+{
+    private string _book;
+    private int _chapter;
+    private int _verse;
+    private int _endVerse = 0;
