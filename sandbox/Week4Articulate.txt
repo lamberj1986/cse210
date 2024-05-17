@@ -1,0 +1,23 @@
+Inheritance is a coding practice that cleans up classes that have similiar functionality, as shown in the example below we have the base class of Assigment, which has two sub-classes of MathAssignment and WritingAssignement. Inheritance allows a sub-class to inherit the properties of its given base class, hence there is no need to repeat any common functionality. Both sub-classes share the same need to have a _studenName and _topic variable, so instead of each sub-class having these variables they are reused at the base class. 
+
+In addition to cutting down on complexity in maintaining mutiple classes, using inheritance can also make the code more readable for future developers. Having shared variables in the base class will help a future developer see what is shared/common amongst the classes and what is unique. On top of the ease of readability in the classes, whenever there are changes or bugs with how the code works having a shared base class makes it easier to maintain. Having only one spot in the code that needs to be updated will make the fixes/updates easier.
+
+An example of inheritance would be as follows (in two class snippets):
+
+public class Assignment // Our base class
+{
+    private string _studentName;
+    private string _topic;
+
+
+public class MathAssignment : Assignment // One of our child classes to the Assignment class
+{
+    private string _textbookSection;
+    private string _problems;
+
+    public MathAssignment(string studentName, string topic, string textbookSection, string problems)
+        : base(studentName, topic)
+    {
+        _textbookSection = textbookSection;
+        _problems = problems;
+    }
