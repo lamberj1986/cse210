@@ -2,12 +2,13 @@ using System;
 
 public class Breathing : Activity
 {
-    private int _breathDuration = 0;
+    // private int _breathDuration = 0;
 
     public Breathing(int duration) 
         : base("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.", duration)
     {
-        _breathDuration = duration;
+        // Removing this as I changed the base class duration to protected
+        // _breathDuration = duration;
     }
     
     public void Run()
@@ -15,7 +16,7 @@ public class Breathing : Activity
         DisplayStartingMessage();
 
         DateTime currentTime = DateTime.Now;
-        DateTime stopTime = currentTime.AddSeconds(_breathDuration);
+        DateTime stopTime = currentTime.AddSeconds(_duration);
         
         while (currentTime <= stopTime)
         {

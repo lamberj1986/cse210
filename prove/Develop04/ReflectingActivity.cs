@@ -31,14 +31,16 @@ public class Reflecting : Activity
         "What could you learn from this experience that applies to other situations?",
     };
 
-    private int _duration;
+    // Removing this as the Activity base class is now protected
+    // private int _duration;
     private int promptIndex;
     private int quesIndex;
 
     public Reflecting(int duration) 
         : base("Reflecting Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.", duration)
     {
-        _duration = duration;
+        // This is no longer needed with the base duration now being protected
+        // _duration = duration;
     }
 
     public void Run()

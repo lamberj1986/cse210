@@ -3,7 +3,9 @@ using System;
 public class Listing : Activity
 {
     private int _count = 0;
-    private int _duration;
+
+    // Removing this variable as I changed the Activity base class to protected
+    // private int _duration;
     private List<String> _prompts = new List<string>
     {
         "Who are the people in your life that you appreciate?",
@@ -21,7 +23,8 @@ public class Listing : Activity
     public Listing(int duration) 
         : base("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", duration)
     {
-        _duration = duration;
+        // No longer needed as the base classe duration is protected
+        // _duration = duration;
     }
 
     public void Run()
