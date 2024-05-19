@@ -7,6 +7,8 @@ class Program
         // Console.WriteLine("Hello Develop04 World!");
 
         string input = "";
+
+        // Added a count with a display of the number of times that each activity has been completed in the current session
         int breathCount = 0;
         int reflectCount = 0;
         int listCount = 0;
@@ -14,6 +16,7 @@ class Program
 
         void DisplayLog()
         {
+            // Added the date format with showing the date in specialized format
             DateTime todaysDate = DateTime.Today;
             string thisDay = todaysDate.ToString("D");
             Console.WriteLine($"Activity Log | Current Session | {thisDay}");
@@ -38,12 +41,15 @@ class Program
 
             input = Console.ReadLine();
 
-            Console.WriteLine();
-            Console.Write("How long would you like to do this activity? (in seconds) ");
-            string tempDuration = Console.ReadLine();
-            duration = Int32.Parse(tempDuration);
+            if (input != "4")
+            {
+                Console.WriteLine();
+                Console.Write("How long would you like to do this activity? (in seconds) ");
+                string tempDuration = Console.ReadLine();
+                duration = Int32.Parse(tempDuration);
+            }
 
-            switch (input)
+            switch (input) // Researched how to use the switch function instead of using while or if statements
             {
                 case "1":
                     Breathing breth = new Breathing(duration);

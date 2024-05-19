@@ -30,7 +30,8 @@ public class Activity
         DateTime stopTime = startTime.AddSeconds(seconds);
         DateTime currentTime = DateTime.Now;
 
-        int freezeTime = 500; // Adding this to be able to update the animation time without having to change multple lines
+        // Adding this to be able to update the animation time without having to change multple lines
+        int freezeTime = 500; 
 
         while (currentTime < stopTime)
         {
@@ -76,6 +77,6 @@ public class Activity
         }
 
         Console.Clear();
-        Console.WriteLine("Time's up!");
+        // Console.WriteLine("Time's up!");
     }
 }
