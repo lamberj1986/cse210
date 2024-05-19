@@ -21,7 +21,7 @@ public class Activity
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine("\n\nCongradulations on completing this activity! You are one step closer to being more mindful.\nLet's keep working on this journey.");
+        Console.WriteLine("\n\nCongratulations on completing this activity! You are one step closer to being more mindful.\nLet's keep working on this journey.\n\n");
     }
 
     public void ShowSpinner(int seconds)
