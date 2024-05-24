@@ -1,0 +1,31 @@
+Polymorphism allows a user to reuse the naming convention of a method and override it's definition as found in the parent class with the action defined in the child class. By using polymorphism, we are able to have flexibility and reusability in our code. We can create a more genric code that will be easier to understand for new devleopers, as well as extend and maintain. In addition to having the flexibility and reusability, polymorphism simplifies the code base. Therefore a future developer can more easily read it and understand what the methods are doing within each class.
+
+In the example below we can see how polymorphism comes in handy when working with geometric formulas. In the parent class Shape, we have an abstract method GetArea that is not defined. Then in the two child classes we override and define what GetArea means for that given shape.
+
+
+public abstract class Shape
+{
+    ...
+
+    public abstract double GetArea();
+}
+
+public class Rectangle : Shape
+{
+    ...
+
+    public override double GetArea()
+    {
+        return _length * _width;
+    }
+}
+
+public class Square : Shape
+{
+    ...
+    
+    public override double GetArea()
+    {
+        return _side * _side;
+    }
+}
