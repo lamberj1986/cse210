@@ -2,32 +2,29 @@ using System;
 
 public class SimpleGoal : Goal
 {
-    private bool _isComplete = false;
-
     public SimpleGoal(string name, string description, int points) : 
         base(name, description, points)
     {
         _shortName = name;
         _description = description;
+        _isComplete = false;
         _points = points;
     }
 
     public override void RecordEvent()
     {
-        if (IsComplete())
-        {
-            _points += _points;
-        }
+        _isComplete = true;
+        _currentPoints += _points;
     }
 
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return _isComplete;
     }
 
     public override string GetStringRepresenatation()
-    {
-        throw new NotImplementedException();
+    {   
+        return $"SimpleGoal:|{_shortName}|{_description}|{_isComplete}";
     }
 
 }

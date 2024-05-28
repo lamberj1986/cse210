@@ -5,6 +5,7 @@ public abstract class Goal
     protected string _shortName;
     protected string _description;
     protected int _points;
+    protected bool _isComplete;
     protected int _currentPoints = 0;
     protected string _checkBox = "[ ]";
 
@@ -12,6 +13,7 @@ public abstract class Goal
     {
         _shortName = name;
         _description = description;
+        _isComplete = false;
         _points = points;
     }
 
@@ -21,14 +23,14 @@ public abstract class Goal
 
     public virtual void SetIsCompleteToTrue()
     {
-
+        _isComplete = true;
     }
 
     public virtual string GetDetailsString()
     {
         string checkMark = "[ ]";
         
-        if (IsComplete())
+        if (_isComplete)
         {
             checkMark = "[X]";
         }
