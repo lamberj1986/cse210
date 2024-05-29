@@ -15,10 +15,13 @@ public class Breathing : Activity
     {
         DisplayStartingMessage();
 
-        DateTime currentTime = DateTime.Now;
-        DateTime stopTime = currentTime.AddSeconds(_duration);
+        // DateTime currentTime = DateTime.Now;
+        // DateTime stopTime = currentTime.AddSeconds(_duration);
+
+        int seconds = 0;
+        bool overTime = true;
         
-        while (currentTime <= stopTime)
+        while (overTime) // Changed this from <= to < to see if this will stop on time.
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -33,7 +36,10 @@ public class Breathing : Activity
             Console.Clear();
             Thread.Sleep(500);
 
-            currentTime = DateTime.Now;
+            // currentTime = DateTime.Now;
+
+            seconds += 5000;
+            overTime = seconds < _duration;
         }
 
         Console.Clear();

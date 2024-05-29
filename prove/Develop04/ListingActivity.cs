@@ -37,8 +37,7 @@ public class Listing : Activity
         ShowCountDown(5);
         Console.WriteLine();
 
-        List<string> _tempResponses = new List<string>
-        {};
+        List<string> _tempResponses = new List<string>{};
 
         _tempResponses = GetListFromUser();
 
@@ -68,15 +67,23 @@ public class Listing : Activity
     public List<string> GetListFromUser()
     {
         DateTime currentTime = DateTime.Now;
-        DateTime stopTime = currentTime.AddSeconds(_duration);
+        int newDuration = _duration / 1000;
+        DateTime stopTime = currentTime.AddSeconds(newDuration);
+
+        // int seconds = 0;
+        // bool overTime = true;
         
-        while (currentTime <= stopTime)
+        while (currentTime <= stopTime) // Originally had this as <=, but it wouldn't stop on time. 
         {
             Console.Write("> ");
+
             string input = Console.ReadLine();
             _responses.Add(input);
 
             currentTime = DateTime.Now;
+
+            // seconds += 5000;
+            // overTime = seconds < _duration;
         }
 
         return _responses;

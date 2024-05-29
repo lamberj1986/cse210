@@ -86,21 +86,29 @@ public class Reflecting : Activity
     {
         GetRandomQuestion();
 
-        DateTime currentTime = DateTime.Now;
-        DateTime stopTime = currentTime.AddSeconds(_duration);
+        // DateTime currentTime = DateTime.Now;
+        // DateTime stopTime = currentTime.AddSeconds(_duration);
+
+        int seconds = 0;
+        bool overTime = true;
         
-        while (currentTime <= stopTime)
+        while (overTime) 
         {
             Console.WriteLine();
             Console.WriteLine("Please provide as many responses as you can to the following prompt:");
             Console.WriteLine($"|  {_questions[quesIndex]}   |");
             Console.WriteLine();
 
-            ShowSpinner(5);
+            // ShowSpinner(5);
+
+            Thread.Sleep(5000);
 
             GetRandomQuestion();
 
-            currentTime = DateTime.Now;
+            // currentTime = DateTime.Now;
+
+            seconds += 5000;
+            overTime = seconds < _duration;
         }
     }
 }
