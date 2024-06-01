@@ -40,25 +40,35 @@ class Program
         //     currentTime = DateTime.Now;
         // }
 
-        int spinnerPosition = 25;
-        int spinWait = 500;
+        // int spinnerPosition = 25;
+        // int spinWait = 500;
 
-        spinnerPosition = Console.CursorLeft;
+        // spinnerPosition = Console.CursorLeft;
 
-        DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(5);
+        // DateTime startTime = DateTime.Now;
+        // DateTime futureTime = startTime.AddSeconds(5);
 
-        while(DateTime.Now < futureTime)
-        {
-            char[] spinChars = new char[]{'|','/','-','\\'};
-            foreach (char spinChar in spinChars)
-            {
-                Console.CursorLeft = spinnerPosition;
-                Console.Write(spinChar);
-                Thread.Sleep(spinWait);
-            }
-        }
-        Console.CursorLeft = spinnerPosition;
-        Console.Write(" ");
+        // while(DateTime.Now < futureTime)
+        // {
+        //     char[] spinChars = new char[]{'|','/','-','\\'};
+        //     foreach (char spinChar in spinChars)
+        //     {
+        //         Console.CursorLeft = spinnerPosition;
+        //         Console.Write(spinChar);
+        //         Thread.Sleep(spinWait);
+        //     }
+        // }
+        // Console.CursorLeft = spinnerPosition;
+        // Console.Write(" ");
+
+        string userName = "<Type your name here>";
+        string dateString = DateTime.Today.ToShortDateString();
+
+        // Use the + and += operators for one-time concatenations.
+        string str = "Hello " + userName + ". Today is " + dateString + ".";
+        System.Console.WriteLine(str);
+
+        str += " How are you today?";
+        System.Console.WriteLine(str);
     }
 }
