@@ -130,7 +130,7 @@ Project 3
 
 Project 4
 +-------------------------+
-|           Activity      |
+|        Activity         |
 +-------------------------+
 | - date: DateTime        |
 | - length: int           |
