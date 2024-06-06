@@ -3,8 +3,10 @@ using System;
 public class GoalManager
 {
     private List<Goal> _goals = new();
-    private int _score;
     private int _pointsTotal;
+
+    // Moved this variable from Goal Manager to Goals and will add method to get the score to be called here.
+    // private int _score;
 
     public GoalManager()
     {
@@ -64,6 +66,7 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
+        // _pointsTotal = Goal.GetPointTotal();
         Console.WriteLine($"You have {_pointsTotal} points.");
         Console.WriteLine();
     }
@@ -76,7 +79,7 @@ public class GoalManager
 
             foreach (Goal goal in _goals)
             {
-                goal.GetDetailsString();
+                Console.WriteLine(goal.GetDetailsString());
             }
         }
         else
@@ -123,6 +126,7 @@ public class GoalManager
                 int points = int.Parse(Console.ReadLine());
 
                 SimpleGoal newSimpleGoal = new SimpleGoal(name, description, points);
+                _goals.Add(newSimpleGoal);
                 break;
             
             case "2":
@@ -134,6 +138,7 @@ public class GoalManager
                 points = int.Parse(Console.ReadLine());
 
                 EternalGoal newEternalGoal = new EternalGoal(name, description, points);
+                _goals.Add(newEternalGoal);
                 break;
 
             case "3":
@@ -149,6 +154,7 @@ public class GoalManager
                 int bonus = int.Parse(Console.ReadLine());
 
                 ChecklistGoal newChecklistGoal = new ChecklistGoal(name, description, points, numberTimes, bonus);
+                _goals.Add(newChecklistGoal);
                 break;
             
             default:
@@ -167,9 +173,11 @@ public class GoalManager
             i++;
         }
         Console.WriteLine("Which goal number did you accomplish?");
-        int workDone = int.Parse(Console.ReadLine());
+        int workDone = int.Parse(Console.ReadLine()) - 1;
 
         _goals[workDone].RecordEvent();
+
+        _pointsTotal += _goals[workDone].GetPointTotal();
     }
 
     public void SaveGoals()
@@ -205,18 +213,19 @@ public class GoalManager
         {
             string[] parts = lines[i].Split("|");
 
-            if (parts[0] == "SimpleGoal") {
-
-                SimpleGoal simpleGoal = new SimpleGoal(parts[1], parts[2], Convert.ToInt32(parts[3]));
+            if (parts[0] == "SimpleGoal") 
+            {
+                SimpleGoal simpleGoal = new SimpleGoal(parts[1], parts[2], Convert.ToInt32(parts[3]), parts[4]);
                 _goals.Add(simpleGoal);             
 
-            } else if (parts[0] == "EternalGoal") {
-
+            }
+            else if (parts[0] == "EternalGoal") 
+            {
                 EternalGoal eternalGoal = new EternalGoal(parts[1], parts[2], Convert.ToInt32(parts[3]));
                 _goals.Add(eternalGoal);
-
-            } else if (parts[0] == "ChecklistGoal") {
-                
+            }
+            else if (parts[0] == "ChecklistGoal") 
+            {    
                 ChecklistGoal checklistGoal = new ChecklistGoal(parts[1], parts[2], Convert.ToInt32(parts[3]), Convert.ToInt32(parts[4]), Convert.ToInt32(parts[5]));
                 _goals.Add(checklistGoal);
             }

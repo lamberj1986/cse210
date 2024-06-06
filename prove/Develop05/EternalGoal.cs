@@ -25,6 +25,11 @@ public class EternalGoal : Goal
 
     public override string GetStringRepresenatation()
     {
-        return $"EternalGoal:|{_shortName}|{_description}|{_points}";
+        return $"EternalGoal|{_shortName}|{_description}|{_points}";
+    }
+
+    public override int GetPointTotal()
+    {
+        return _currentPoints;
     }
 }

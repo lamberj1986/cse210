@@ -38,5 +38,10 @@ public abstract class Goal
         return $"{checkMark} {_shortName} - {_description}";
     }
 
+    public virtual int GetPointTotal()
+    {
+        return _currentPoints;
+    }
+
     public abstract string GetStringRepresenatation();
 }

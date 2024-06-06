@@ -11,6 +11,22 @@ public class SimpleGoal : Goal
         _points = points;
     }
 
+    public SimpleGoal(string name, string description, int points, string isComplete) : 
+        base(name, description, points)
+    {
+        _shortName = name;
+        _description = description;
+        _points = points;
+
+        bool toBool = false;
+        if (isComplete.ToLower() == "true")
+        {
+            toBool = true;
+        }
+
+        _isComplete = toBool;
+    }
+
     public override void RecordEvent()
     {
         _isComplete = true;
@@ -24,7 +40,11 @@ public class SimpleGoal : Goal
 
     public override string GetStringRepresenatation()
     {   
-        return $"SimpleGoal:|{_shortName}|{_description}|{_isComplete}";
+        return $"SimpleGoal|{_shortName}|{_description}|{_points}|{_isComplete}";
     }
 
+    public override int GetPointTotal()
+    {
+        return _currentPoints;
+    }
 }

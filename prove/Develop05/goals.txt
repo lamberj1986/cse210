@@ -1,0 +1,5 @@
+185
+SimpleGoal|get and a|get an a in this class|50|True
+EternalGoal|Go to church|go to church each sunday, you bum|10
+ChecklistGoal|read scripture daily|read some scripture each and every day|10|30|250|0
+SimpleGoal|finish strong|finish the semester with a strong end|125|True
