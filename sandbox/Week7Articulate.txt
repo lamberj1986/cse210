@@ -1,0 +1,86 @@
+Abstraction is a way to hide complex parts of the code and only display the key information that is needed to run the program. A part of this is making sure that the inputs are necessary from the user and the program doesn't collect extra information.
+
+Example of this from Final:
+
+public class Comment
+{
+    private string _commentHandle;
+    private string _comment;
+
+        public Comment(string handle, string text)
+    {
+        _commentHandle = handle;
+        _comment = text;
+    }
+
+Encapsulation is method to help protect the main program by puling out any private processes and adding them into a class or method. Having your code encapsulated allows you to protect your data, allows for increased modularity, and removes any unnecessary interference.
+
+Example of this from Final:
+
+public class Address
+{
+    private string _street;
+    private string _city;
+    private string _stateProvince;
+    private string _country;
+
+    public Address(string street, string city, string stateProvince, string country)
+    {
+        _street = street;
+        _city = city;
+        _stateProvince = stateProvince;
+        _country = country;
+    }
+
+Inheritance is a way to smiplify your code by pulling variables from a base class. This allows you to save any duplicitave coding or future changes as it will all be saved in a singular location.
+
+Example of this from Final:
+
+public class Event
+{
+    ...
+
+    public Event(string title, string description, string date, string time, Address address)
+    {
+        _title = title;
+        _description = description;
+        _date = date;
+        _time = time;
+        _address = address;
+    }
+
+public class Lecture : Event
+{
+    private string _speaker;
+    private int _capacity;
+
+    public Lecture(string title, string description, string date, string time, Address address, string speaker, int capacity)
+        : base (title, description, date, time, address)
+    {
+        _speaker = speaker;
+        _capacity = capacity;
+    }
+
+Polymorphism allows users to reuse various methods and override how that method works in the child class. In exxence this allows for you to have a common experinece if the child class doesn't redefine the method, but then allows for customization in the child classes that need it.
+
+Example of this from the Final:
+
+public class Activity
+{
+    ...
+
+    public virtual double GetDistance()
+    {
+        return 0;
+    }
+
+public class Running : Activity
+{
+    ...
+
+    public override double GetDistance()
+    {
+        return _distance;
+    }
+
+Each one of these principals allowed my final project to be flexible to future changes in the fact that with a centarlized parent class, I can control the variables and data types and only have to go to one spot in the code to make changes to those areas. Additionally having a method defineed in the base class allows me to make quick changes to one spot, if needed, and have that change propigate out to the rest of the program. In essence each one of these principles has created a program that is easier to maintain and will allow for better data protection and minimize any unnecessary data from being collected.
